@@ -5,6 +5,9 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile-automation   # the project lives in this sub-folder
     steps:
       - uses: actions/checkout@v4
 
@@ -41,6 +44,7 @@ jobs:
           api-level: 33
           target: google_apis
           arch: x86_64
+          working-directory: mobile-automation
           script: python -m pytest -m smoke
 
       - name: Build Allure report
@@ -54,4 +58,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-report
-          path: reports/
+          path: mobile-automation/reports/
