@@ -1,0 +1,8 @@
+{
+  "text_inputs": [
+    "Hello Appium",
+    "test.user@example.com",
+    "12345 67890",
+    "Special chars !@#$%"
+  ]
+}

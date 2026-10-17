@@ -1,0 +1,37 @@
+# ------------------------------------------------------------------
+# Mobile automation settings — edit this file to test YOUR app.
+# Every value can also be overridden from the command line, e.g.
+#   pytest --app apps/myapp.apk --device emulator-5554
+# ------------------------------------------------------------------
+
+appium:
+  server_url: "http://127.0.0.1:4723"
+  auto_start: true          # start Appium automatically if it isn't running
+
+device:
+  platform_name: "Android"
+  automation_name: "UiAutomator2"
+  device_name: "Android Device"
+  udid: ""                  # leave empty to use the only connected device
+
+app:
+  # Path to the APK under test (relative to the project folder).
+  # The sample tests use Appium's public demo app "ApiDemos".
+  path: "apps/ApiDemos-debug.apk"
+  package: "io.appium.android.apis"
+  activity: ".ApiDemos"
+  no_reset: false           # true = keep app data between tests
+  auto_grant_permissions: true
+
+timeouts:
+  implicit: 0               # keep 0 — the framework uses explicit waits
+  explicit: 15              # seconds to wait for an element
+  new_command: 300          # seconds Appium waits for the next command
+
+reports:
+  screenshot_on_failure: true
+  video: "on_failure"       # always | on_failure | never
+  video_time_limit: 180     # seconds (Android's limit for one recording)
+  logcat: "on_failure"      # always | on_failure | never
+  fail_on_crash: true       # fail a test if the app crashed, even if its asserts passed
+  bug_report: true          # write a ready-to-paste bug report for every failure
