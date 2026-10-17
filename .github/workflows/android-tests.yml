@@ -26,8 +26,9 @@ jobs:
           appium driver install uiautomator2
           pip install -r requirements.txt
 
-      - name: Download demo app
+      - name: Download demo app (only if not in the repo)
         run: |
+          [ -f apps/ApiDemos-debug.apk ] && exit 0
           mkdir -p apps
           URL=$(curl -fsSL https://api.github.com/repos/appium/android-apidemos/releases/latest \
                 | grep -o '"browser_download_url": *"[^"]*ApiDemos-debug.apk"' | head -1 | cut -d'"' -f4)

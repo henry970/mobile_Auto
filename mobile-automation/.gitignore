@@ -3,3 +3,5 @@ __pycache__/
 .pytest_cache/
 reports/
 apps/*.apk
+# rebuilt demo app without SMS/accessibility/device-admin, so Play Protect allows it
+!apps/ApiDemos-debug.apk
